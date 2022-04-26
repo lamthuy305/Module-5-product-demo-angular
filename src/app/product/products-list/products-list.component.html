@@ -1,38 +1,40 @@
-<div class="row col-12" >
-  <div class="col-10">
-    <h1>List Products</h1>
+<div *ngIf="isShowList">
+  <div class="row col-12">
+    <div class="col-10">
+      <h1>List Products</h1>
+    </div>
+    <div class="col-2">
+      <button (click)="showFormCreate(); changeShowList()" class="btn btn-primary">Show Create Form</button>
+    </div>
   </div>
-  <div class="col-2">
-    <button (click)="showFormCreate()" class="btn btn-primary">Show Create Form</button>
-  </div>
+
+  <table class="table" style="margin-top: 20px">
+    <thead class="table-dark">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Description</th>
+      <th colspan="2"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let product of products">
+      <td>{{product.id}}</td>
+      <td>{{product.name}}</td>
+      <td>{{product.price}}</td>
+      <td>{{product.description}}</td>
+      <td>
+        <button class="btn btn-primary" (click)="showFormEdit(product);changeShowList()">Edit</button>
+      </td>
+      <td>
+        <button class="btn btn-danger" (click)="showFormDelete(product);changeShowList()">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
 </div>
 
-
-<table class="table" style="margin-top: 20px">
-  <thead class="table-dark">
-  <tr>
-    <th>ID</th>
-    <th>Name</th>
-    <th>Price</th>
-    <th>Description</th>
-    <th colspan="2"></th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let product of products">
-    <td>{{product.id}}</td>
-    <td>{{product.name}}</td>
-    <td>{{product.price}}</td>
-    <td>{{product.description}}</td>
-    <td>
-      <button class="btn btn-primary" (click)="showFormEdit(product)">Edit</button>
-    </td>
-    <td>
-      <button class="btn btn-danger" (click)="showFormDelete(product)">Delete</button>
-    </td>
-  </tr>
-  </tbody>
-</table>
 
 <app-products-edit *ngIf="isShowEditForm" [product]="currentProduct"
                    (editEvent)="editProduct($event)"></app-products-edit>
@@ -40,5 +42,6 @@
                      (editEvent)="deleteProduct($event)"></app-products-delete>
 
 <app-product-create *ngIf="isShowCreateForm" (editEvent)="createProduct($event)"></app-product-create>
+
 
 

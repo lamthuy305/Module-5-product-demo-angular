@@ -74,6 +74,7 @@ export class ProductsListComponent implements OnInit {
     }
     this.products[index] = product;
     this.isShowEditForm = !this.isShowEditForm;
+    this.changeShowList();
 
   }
 
@@ -96,10 +97,12 @@ export class ProductsListComponent implements OnInit {
     }
     this.products = newProducts;
     this.isShowDeleteForm = !this.isShowDeleteForm;
+    this.changeShowList();
   }
 
   createProduct(product) {
     this.products.push(product);
     this.isShowCreateForm = !this.isShowCreateForm;
+    this.changeShowList();
   }
 }
