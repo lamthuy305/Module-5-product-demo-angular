@@ -1,0 +1,27 @@
+<h1>Edit Product</h1>
+<form (ngSubmit)="submitEdit()" style="margin-top: 20px">
+  <div class="form-group">
+    <label for="id"><h5>Id sản phẩm</h5></label>
+    <input class="form-control" id="id" placeholder="Nhập id" type="number" name="id" [(ngModel)]="product.id" disabled>
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="name"><h5>Tên sản phẩm</h5></label>
+    <input class="form-control" id="name" placeholder="Nhập tên sản phẩm" type="text" name="name" [(ngModel)]="product.name">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="price"><h5>Giá sản phẩm</h5></label>
+    <input class="form-control" id="price" placeholder="Nhập giá sản phẩm" type="text" name="price" [(ngModel)]="product.price">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="description"><h5>Mô tả sản phẩm</h5></label>
+    <input class="form-control" id="description" placeholder="Nhập mô tả sản phẩm" type="text" name="description" [(ngModel)]="product.description">
+  </div>
+  <div style="margin-top: 20px">
+    <button class="btn btn-primary" type="submit">Chỉnh sửa</button>
+  </div>
+</form>
+
+
